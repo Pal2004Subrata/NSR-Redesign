@@ -631,13 +631,95 @@
 }
 
 @media (max-width: 640px) {
-  .modal-body-wrapper {
-    padding: 1.5rem;
+  .modal-backdrop {
+    padding: 0.75rem;
+    align-items: flex-end;
   }
+
+  .modal-container {
+    max-height: 94vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .modal-body-wrapper {
+    padding: 1.25rem 1rem;
+  }
+
+  .modal-title {
+    font-size: 1.25rem;
+  }
+
+  .modal-sub {
+    font-size: 0.8rem;
+  }
+
   .form-row-2 {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
+
   .amc-plans-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .captcha-row {
+    flex-wrap: wrap;
+  }
+
+  .captcha-box {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .captcha-input {
+    width: 100%;
+  }
+
+  .modal-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .modal-tab {
+    flex: none;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.78rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .easteregg-modal-wrapper {
+    padding: 1.25rem 1rem;
+  }
+
+  .easteregg-title {
+    font-size: 1.3rem;
+  }
+
+  .cyber-body {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .cyber-stats-row {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .easteregg-actions-grid {
     grid-template-columns: 1fr;
   }
 }

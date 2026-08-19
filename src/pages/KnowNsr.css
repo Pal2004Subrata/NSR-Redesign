@@ -910,45 +910,112 @@
 @media (max-width: 1024px) {
   .know-layout-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
+
   .know-sidebar {
     position: static;
   }
+
+  .know-sidebar-nav {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .know-nav-tab {
+    flex-shrink: 0;
+  }
+
   .know-cards-grid {
     grid-template-columns: 1fr;
   }
+
   .stakeholder-cards-grid {
     grid-template-columns: 1fr;
   }
+
   .benefits-dual-column {
     grid-template-columns: 1fr;
   }
+
   .members-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .other-features-grid {
     grid-template-columns: 1fr;
   }
+
   .security-pillars-grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .know-hero-section {
+    padding: 3rem 0 3.5rem 0;
+  }
+
+  .know-hero-title {
+    font-size: 2.2rem;
+  }
+
   .know-content-area {
     padding: 1.5rem;
   }
-  .know-hero-title {
-    font-size: 2.1rem;
+}
+
+@media (max-width: 640px) {
+  .know-hero-section {
+    padding: 2.25rem 0 2.75rem 0;
   }
+
+  .know-content-area {
+    padding: 1.15rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .know-hero-title {
+    font-size: 1.85rem;
+  }
+
+  .know-hero-subtitle {
+    font-size: 0.92rem;
+  }
+
   .members-grid {
     grid-template-columns: 1fr;
   }
+
   .chart-bars-container {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
+
   .due-diligence-download-strip {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .due-diligence-download-strip .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tab-header-banner {
+    padding: 1.15rem;
+    border-radius: var(--radius-md);
+  }
+
+  .tab-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 }

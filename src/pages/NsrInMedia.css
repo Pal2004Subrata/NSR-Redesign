@@ -388,20 +388,65 @@
 @media (max-width: 1024px) {
   .media-layout-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
+
   .media-sidebar {
     position: static;
   }
+
+  .media-sidebar-nav {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .media-nav-tab {
+    flex-shrink: 0;
+  }
+
   .articles-cards-grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 640px) {
-  .leader-speech-card {
-    padding: 1.5rem;
+@media (max-width: 768px) {
+  .media-hero-section {
+    padding: 3rem 0 3.5rem 0;
   }
+
   .media-hero-title {
-    font-size: 2.1rem;
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .media-hero-section {
+    padding: 2.25rem 0 2.75rem 0;
+  }
+
+  .leader-speech-card {
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .media-hero-title {
+    font-size: 1.85rem;
+  }
+
+  .media-hero-subtitle {
+    font-size: 0.92rem;
+  }
+
+  .article-item-card {
+    padding: 1.15rem;
+  }
+
+  .speech-video-card {
+    border-radius: var(--radius-lg);
   }
 }

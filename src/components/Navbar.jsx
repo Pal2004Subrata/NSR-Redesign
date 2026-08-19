@@ -376,11 +376,20 @@ export default function Navbar({ currentPage, onNavigate, onOpenLogin, onOpenReg
           {/* Mobile Actions */}
           <div className="mobile-toggle-wrapper mobile-nav-only">
             <button 
+              className="mobile-icon-btn"
+              onClick={() => onOpenLogin && onOpenLogin('professional')}
+              aria-label="Login"
+              title="Sign In"
+            >
+              <Lock size={18} />
+            </button>
+            <button 
               className="mobile-icon-btn mobile-menu-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle Navigation"
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
 
@@ -392,18 +401,147 @@ export default function Navbar({ currentPage, onNavigate, onOpenLogin, onOpenReg
         <div className="mobile-full-drawer glass-panel-dark">
           <div className="mobile-drawer-inner">
             <div className="mobile-nav-list">
-              <button onClick={() => handleNavClick('home')} className="mobile-nav-item-btn">Home</button>
-              <button onClick={() => handleNavClick('about')} className="mobile-nav-item-btn">About NSR (NDML & NASSCOM)</button>
-              <button onClick={() => handleNavClick('home', 'professionals')} className="mobile-nav-item-btn">Knowledge Professionals</button>
-              <button onClick={() => handleNavClick('home', 'companies')} className="mobile-nav-item-btn">Subscriber Companies</button>
-              <button onClick={() => handleNavClick('home', 'eee')} className="mobile-nav-item-btn">Exit Employment Exchange</button>
-              <button onClick={() => handleNavClick('home', 'stats')} className="mobile-nav-item-btn">Registry Statistics</button>
-              <button onClick={() => handleNavClick('media')} className="mobile-nav-item-btn">NSR in Media (Press & Leaders)</button>
-              <button onClick={() => handleNavClick('home', 'certificate')} className="mobile-nav-item-btn">Root Certificate Download</button>
-              <button onClick={() => handleNavClick('home', 'faqs')} className="mobile-nav-item-btn">FAQs & Help</button>
-              <button onClick={() => handleNavClick('contact')} className="mobile-nav-item-btn">Contact Us</button>
+              <button 
+                onClick={() => handleNavClick('home')} 
+                className={`mobile-nav-item-btn ${activeNavKey === 'home' ? 'is-active' : ''}`}
+              >
+                <span>Home</span>
+                <ArrowRight size={15} className="mobile-chevron" />
+              </button>
+
+              <button 
+                onClick={() => handleNavClick('about')} 
+                className={`mobile-nav-item-btn ${activeNavKey === 'about' ? 'is-active' : ''}`}
+              >
+                <span>About NSR (NDML & NASSCOM)</span>
+                <ArrowRight size={15} className="mobile-chevron" />
+              </button>
+
+              {/* Know NSR Accordion for Mobile */}
+              <div className="mobile-nav-accordion">
+                <button 
+                  onClick={() => toggleDropdown('knowNsrMobile')}
+                  className={`mobile-nav-item-btn ${activeNavKey === 'know-nsr' ? 'is-active' : ''}`}
+                >
+                  <div className="mobile-item-title-wrap">
+                    <span>Know NSR</span>
+                    <span className="mobile-subtag-pill">10 Modules</span>
+                  </div>
+                  <ChevronDown size={16} className={`mobile-chevron ${activeDropdown === 'knowNsrMobile' ? 'rotate-180' : ''}`} />
+                </button>
+
+                {activeDropdown === 'knowNsrMobile' && (
+                  <div className="mobile-submenu-grid">
+                    <button onClick={() => handleNavClick('know-nsr', 'context')} className="mobile-sublink-btn">
+                      <Compass size={14} className="text-blue" />
+                      <span>1. NSR Context & Genesis</span>
+                    </button>
+                    <button onClick={() => handleNavClick('know-nsr', 'attributes')} className="mobile-sublink-btn">
+                      <ShieldCheck size={14} className="text-emerald" />
+                      <span>2. NSR Attributes & Singularity</span>
+                    </button>
+                    <button onClick={() => handleNavClick('know-nsr', 'users')} className="mobile-sublink-btn">
+                      <Users size={14} className="text-blue" />
+                      <span>3. Users & Service Providers</span>
+                    </button>
+                    <button onClick={() => handleNavClick('know-nsr', 'processes')} className="mobile-sublink-btn">
+                      <Workflow size={14} className="text-rose" />
+                      <span>4. NSR Process Flows</span>
+                    </button>
+                    <button onClick={() => handleNavClick('know-nsr', 'benefits')} className="mobile-sublink-btn">
+                      <Award size={14} className="text-amber" />
+                      <span>5. NSR Benefits Matrix</span>
+                    </button>
+                    <button onClick={() => handleNavClick('know-nsr', 'milestones')} className="mobile-sublink-btn">
+                      <TrendingUp size={14} className="text-emerald" />
+                      <span>6. NSR Milestones</span>
+                    </button>
+                    <button onClick={() => handleNavClick('know-nsr', 'system-features')} className="mobile-sublink-btn">
+                      <Cpu size={14} className="text-blue" />
+                      <span>7. System Features & Maker-Checker</span>
+                    </button>
+                    <button onClick={() => handleNavClick('know-nsr', 'security-features')} className="mobile-sublink-btn">
+                      <Lock size={14} className="text-rose" />
+                      <span>8. Security & ISO 27001</span>
+                    </button>
+                    <button onClick={() => handleNavClick('know-nsr', 'steering-committee')} className="mobile-sublink-btn">
+                      <UserCheck size={14} className="text-blue" />
+                      <span>9. Steering Committee</span>
+                    </button>
+                    <button onClick={() => handleNavClick('know-nsr', 'empanelled-checkers')} className="mobile-sublink-btn">
+                      <FileCheck size={14} className="text-emerald" />
+                      <span>10. Empanelment of BGCs</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              <button 
+                onClick={() => handleNavClick('home', 'professionals')} 
+                className={`mobile-nav-item-btn ${activeNavKey === 'professionals' ? 'is-active' : ''}`}
+              >
+                <span>Knowledge Professionals</span>
+                <ArrowRight size={15} className="mobile-chevron" />
+              </button>
+
+              <button 
+                onClick={() => handleNavClick('home', 'companies')} 
+                className={`mobile-nav-item-btn ${activeNavKey === 'companies' ? 'is-active' : ''}`}
+              >
+                <span>Subscriber Companies</span>
+                <ArrowRight size={15} className="mobile-chevron" />
+              </button>
+
+              <button 
+                onClick={() => handleNavClick('home', 'eee')} 
+                className="mobile-nav-item-btn"
+              >
+                <span>Exit Employment Exchange (EEE)</span>
+                <span className="mobile-badge-tag">Hot</span>
+              </button>
+
+              <button 
+                onClick={() => handleNavClick('home', 'stats')} 
+                className="mobile-nav-item-btn"
+              >
+                <span>Registry Statistics (3.7M+)</span>
+                <ArrowRight size={15} className="mobile-chevron" />
+              </button>
+
+              <button 
+                onClick={() => handleNavClick('media')} 
+                className={`mobile-nav-item-btn ${activeNavKey === 'media' ? 'is-active' : ''}`}
+              >
+                <span>NSR in Media (Press & Leaders)</span>
+                <ArrowRight size={15} className="mobile-chevron" />
+              </button>
+
+              <button 
+                onClick={() => handleNavClick('home', 'certificate')} 
+                className="mobile-nav-item-btn"
+              >
+                <span>Root Certificate Download</span>
+                <ArrowRight size={15} className="mobile-chevron" />
+              </button>
+
+              <button 
+                onClick={() => handleNavClick('home', 'faqs')} 
+                className="mobile-nav-item-btn"
+              >
+                <span>FAQs & Help Center</span>
+                <ArrowRight size={15} className="mobile-chevron" />
+              </button>
+
+              <button 
+                onClick={() => handleNavClick('contact')} 
+                className={`mobile-nav-item-btn ${activeNavKey === 'contact' ? 'is-active' : ''}`}
+              >
+                <span>Contact Us & Helplines</span>
+                <ArrowRight size={15} className="mobile-chevron" />
+              </button>
             </div>
 
+            {/* Mobile CTAs & Utility Bar */}
             <div className="mobile-cta-box">
               <button 
                 className="btn btn-danger btn-lg w-full"
@@ -412,17 +550,53 @@ export default function Navbar({ currentPage, onNavigate, onOpenLogin, onOpenReg
                   onOpenRegister();
                 }}
               >
-                <User size={18} /> Register as Professional
+                <User size={18} /> Register Profile (New ITPIN)
               </button>
-              <button 
-                className="btn btn-outline-light btn-lg w-full"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenLogin('professional');
-                }}
-              >
-                <Lock size={18} /> Sign In to Portal
-              </button>
+              
+              <div className="mobile-login-row">
+                <button 
+                  className="btn btn-primary w-full"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenLogin('professional');
+                  }}
+                >
+                  <Lock size={16} /> Candidate Login
+                </button>
+                <button 
+                  className="btn btn-outline-light w-full"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenLogin('company');
+                  }}
+                >
+                  <Building2 size={16} /> Employer Portal
+                </button>
+              </div>
+
+              {/* Mobile Quick Support Link */}
+              <div className="mobile-support-strip">
+                <button 
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onOpenGrievance) onOpenGrievance();
+                  }}
+                  className="mobile-support-btn"
+                >
+                  <HelpCircle size={14} className="text-cyan" />
+                  <span>Submit Query / Grievance</span>
+                </button>
+                <a 
+                  href="https://nationalskillsregistry.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="mobile-support-btn"
+                >
+                  <Globe size={14} className="text-emerald" />
+                  <span>nationalskillsregistry.com</span>
+                  <ExternalLink size={11} />
+                </a>
+              </div>
             </div>
           </div>
         </div>

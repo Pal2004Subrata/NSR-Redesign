@@ -375,10 +375,79 @@
 }
 
 @media (max-width: 768px) {
+  .features-section {
+    padding: 3.5rem 0 4rem 0;
+  }
+
   .bento-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
   .bento-hero-card {
     grid-column: span 1;
+  }
+
+  .bento-card {
+    padding: 1.5rem;
+  }
+
+  .eee-heading {
+    font-size: 1.5rem;
+  }
+
+  .eee-metrics-row {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .eee-metric {
+    min-width: calc(50% - 0.5rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .features-section {
+    padding: 2.75rem 0 3.25rem 0;
+  }
+
+  .bento-card {
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .eee-heading {
+    font-size: 1.35rem;
+  }
+
+  .eee-text {
+    font-size: 0.88rem;
+  }
+
+  .eee-btn-row {
+    flex-direction: column;
+  }
+
+  .eee-btn-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tour-cta-group {
+    flex-direction: column;
+  }
+
+  .tour-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .newsletter-input-box {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .newsletter-input-box .btn {
+    width: 100%;
+    justify-content: center;
   }
 }
